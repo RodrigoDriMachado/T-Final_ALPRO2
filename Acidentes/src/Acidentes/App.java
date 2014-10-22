@@ -8,7 +8,7 @@ package Acidentes;
 
 /**
  *
- * @author 12280437
+ * @author 12280437 Rodrigo / Lariel
  */
 public class App {
     
