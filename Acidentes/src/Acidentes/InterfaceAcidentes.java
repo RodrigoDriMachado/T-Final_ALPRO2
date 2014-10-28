@@ -33,6 +33,12 @@ public class InterfaceAcidentes extends javax.swing.JFrame {
         jMenuItemCarregar = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
+        fileChooser.setApproveButtonText("Abrir");
+        fileChooser.setApproveButtonToolTipText("Selecionar o arquivo para leitura");
+        fileChooser.setBackground(java.awt.Color.white);
+        fileChooser.setDialogTitle("");
+        fileChooser.setToolTipText("");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenuBarPrincipal.setToolTipText("");
