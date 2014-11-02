@@ -20,11 +20,11 @@ import java.util.Scanner;
 
 public class CadastroAcidentes {
 
-    private ArrayList<Acidente> lista;
+    private ListDoubleLinked<Acidente> lista;
     private static CadastroAcidentes cad = null;
 
     private CadastroAcidentes() {
-        lista = new ArrayList<>();
+        lista = new ListDoubleLinked<>();
     }
 
     public static CadastroAcidentes getInstance() {
@@ -35,11 +35,11 @@ public class CadastroAcidentes {
     }
 
     public void cleanAll() {
-        lista = new ArrayList<>();
+        lista.clear();
     }
 
-    public boolean add(Acidente f) {
-        return lista.add(f);
+    public void add(Acidente f) {
+         lista.add(f);
     }
 
     /* public boolean saveFile(String nomeArq) {

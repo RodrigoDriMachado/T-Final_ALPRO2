@@ -11,7 +11,7 @@ package Acidentes;
  */
 public class ListDoubleLinked<E> implements ListTAD<E> {
 
-    private class Node<T> {
+        private class Node<T> {
 
         public T element;
         public Node<T> next;

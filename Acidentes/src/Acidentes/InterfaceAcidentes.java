@@ -31,6 +31,7 @@ public class InterfaceAcidentes extends javax.swing.JFrame {
         jMenuBarPrincipal = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemCarregar = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         fileChooser.setApproveButtonText("Abrir");
@@ -60,6 +61,9 @@ public class InterfaceAcidentes extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItemCarregar);
+
+        jMenu3.setText("Pesquisas");
+        jMenu1.add(jMenu3);
 
         jMenuBarPrincipal.add(jMenu1);
 
@@ -131,6 +135,7 @@ public class InterfaceAcidentes extends javax.swing.JFrame {
     private javax.swing.JFileChooser fileChooser;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBarPrincipal;
     private javax.swing.JMenuItem jMenuItemCarregar;
     // End of variables declaration//GEN-END:variables
