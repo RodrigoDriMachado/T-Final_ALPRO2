@@ -15,14 +15,19 @@ public class App {
     public static void main(String[] args) {
         
         CadastroAcidentes cads = CadastroAcidentes.getInstance();
+        
+        Acidente ac = new Acidente("AV","Ana Cesar", "21/10/2014");
+        cads.add(ac);
+        System.out.println(cads.toString());
 
+        /*
         if(cads.readFile("acidente.csv"))
             System.out.println(cads.toString());
         
         else
             System.out.println("Erro de LEITURA JUMENTO");
         
-        
+        */
     }
     
 }

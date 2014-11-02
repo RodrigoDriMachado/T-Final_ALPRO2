@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Acidentes;
 
 /**
@@ -11,133 +10,196 @@ package Acidentes;
  * @author RODRIGO
  */
 public class ListDoubleLinked<E> implements ListTAD<E> {
-    
-    private Node<E> head;
-    private Node<E> tail;
-    private int count;
 
-    
     private class Node<T> {
 
         public T element;
         public Node<T> next;
-        public Node<T> ant;
+        public Node<T> prev;
 
         public Node(T e) {
             element = e;
             next = null;
+            prev = null;
         }
-
-        public T getElement() {
-            return element;
-        }
-
-        public void setElement(T element) {
-            this.element = element;
-        }
-        
     }
-    
+    private Node<E> header;
+    private Node<E> trailer;
+    private int count;
+
+    public ListDoubleLinked() {
+        header = new Node<E>(null);
+        trailer = new Node<E>(null);
+        header.next = trailer;
+        trailer.prev = header;
+        count = 0;
+    }
+
     @Override
     public void add(E element) {
         Node<E> novoNodo = new Node(element);
-        if(isEmpty()){
-            head.next = novoNodo;
-            novoNodo.ant = head;
-            novoNodo.next= tail;
-            tail.ant = novoNodo;
-        }
-        else{
-            novoNodo.ant = tail;
-            tail.next = novoNodo;
-            tail = novoNodo;
-        }
+        novoNodo.next = trailer;
+        novoNodo.prev = trailer.prev;
+        trailer.prev.next = novoNodo;
+        trailer.prev = novoNodo;
         count++;
     }
 
     @Override
     public void add(int index, E element) {
-        if(index<0||index>count){
+        if (index < 0 || index > count) {
             throw new IndexOutOfBoundsException();
         }
-        Node<E> novoNodo = new Node(element);
-        if (index == 0) {
-            if (isEmpty()) {
-                head.next = novoNodo;
-                novoNodo.ant = head;
-                novoNodo.next= tail;
-                tail.ant = novoNodo;
-                count++;
-                return;
-            }
+        Node<E> novoNodo = new Node<>(element);
+        if (index == count) {
+            novoNodo.next = trailer;
+            novoNodo.prev = trailer.prev;
+            trailer.prev.next = novoNodo;
+            trailer.prev = novoNodo;
+            count++;
         } else {
-            Node<E> aux = head;
-            //Node<E> ant = null;
-            for (int i = 0; i < count; i++) {
-                if (i == index) {
-                    aux.ant.next = novoNodo;
-                    novoNodo.ant = aux.ant;
-                    aux.ant=novoNodo;
-                    novoNodo.next = aux;
-                    count++;
-                    return;
-                } else {
+            Node<E> aux = null;
+            if (index < count / 2) {
+                aux = header.next;
+                for (int i = 0; i < index; i++) {
                     aux = aux.next;
+                }
+            } else {
+                aux = trailer.prev;
+                for (int i = count - 1; i > index; i--) {
+                    aux = aux.prev;
                 }
             }
         }
-        tail.ant.next = novoNodo;
-        novoNodo.ant = tail.ant;
-        novoNodo.next = tail;
-        tail.ant = novoNodo;
-        count++;
-        return;
     }
 
     @Override
     public E get(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (index < 0 || index > count) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<E> aux = null;
+        if (index < count / 2) {
+            aux = header.next;
+            for (int i = 0; i < index; i++) {
+                aux = aux.next;
+            }
+        } else {
+            aux = trailer.prev;
+            for (int i = count - 1; i > index; i--) {
+                aux = aux.prev;
+            }
+        }
+        return aux.element;
     }
 
     @Override
     public E set(int index, E element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (index < 0 || index > count) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<E> aux = null;
+        if (index < count / 2) {
+            aux = header.next;
+            for (int i = 0; i < index; i++) {
+                aux = aux.next;
+            }
+        } else {
+            aux = trailer.prev;
+            for (int i = count - 1; i > index; i--) {
+                aux = aux.prev;
+            }
+        }
+        E elem = aux.element;
+        aux.element = element;
+        return elem;
+
     }
 
     @Override
     public boolean remove(E element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Node<E> aux=header.next;
+        for(int i=0; i<count;i++){
+            if(aux.element.equals(element)){
+                aux.prev.next=aux.next;
+                aux.next.prev=aux.prev;
+                count--;
+                return true;
+            }
+            else{
+                aux=aux.next;
+            }
+        }
+        return false;
     }
 
     @Override
     public E remove(int index) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (index < 0 || index > count) {
+            throw new IndexOutOfBoundsException();
+        }
+        Node<E> aux = null;
+        if (index < count / 2) {
+            aux = header.next;
+            for (int i = 0; i < index; i++) {
+                aux = aux.next;
+            }
+        } else {
+            aux = trailer.prev;
+            for (int i = count - 1; i > index; i--) {
+                aux = aux.prev;
+            }
+        }
+        aux.next.prev = aux.prev;
+        aux.prev.next = aux.next;
+        count--;
+        return aux.element;
     }
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      return (header.next==trailer);
     }
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return count;
     }
 
     @Override
     public boolean contains(E element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         Node<E> aux=header.next;
+        for(int i=0; i<count;i++){
+            if(aux.element.equals(element)){
+                return true;
+            }
+            else{
+                aux=aux.next;
+            }
+        }
+        return false;
     }
 
     @Override
     public int indexOf(E element) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        int index = 0;
+        Node<E> aux = header.next;
+        while (aux != null) {
+            if (aux.element.equals(element)) {
+                return (index);
+            }
+            aux = aux.next;
+            index++;
+        }
+        return -1;
+        
     }
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        header.next=trailer;
+        trailer.prev= header;
+        count=0;
     }
 
-    
 }
