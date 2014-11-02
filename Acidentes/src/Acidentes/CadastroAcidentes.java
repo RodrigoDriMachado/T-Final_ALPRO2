@@ -15,7 +15,6 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CadastroAcidentes {
@@ -61,6 +60,7 @@ public class CadastroAcidentes {
             String str = null, nome_r = null, pref_rua = null, data = null;
             sc.useDelimiter("[./;n]"); // separadores: ; e nova linha
             while (sc.hasNext()) {
+                System.out.println("passei por aqui");
                 str = sc.next();
                 pref_rua = str;
                 nome_r = sc.next();
@@ -77,6 +77,6 @@ public class CadastroAcidentes {
 
     @Override
     public String toString() {
-        return "CadastroAcidentes{" + "\n lista=" + lista + '}';
+        return lista.toString();
     }
 }

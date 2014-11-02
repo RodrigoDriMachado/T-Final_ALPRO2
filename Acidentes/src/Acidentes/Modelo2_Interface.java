@@ -33,7 +33,7 @@ public class Modelo2_Interface extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        Import = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,10 +56,11 @@ public class Modelo2_Interface extends javax.swing.JFrame {
         jButton2.setText("PESQUISAR");
 
         jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        Import.setText("Import");
+        jMenu1.add(Import);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -141,12 +142,12 @@ public class Modelo2_Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Import;
     private javax.swing.JTextField PesquisaNomeRua;
     private javax.swing.JTextField PesquisaNomeRua1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

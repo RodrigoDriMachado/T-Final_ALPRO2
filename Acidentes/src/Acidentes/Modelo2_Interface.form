@@ -8,11 +8,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="File"/>
           </Properties>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Edit"/>
-          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="Import">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Import"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

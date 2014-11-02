@@ -14,9 +14,8 @@ public class App {
     
     public static void main(String[] args) {
         
-        CadastroAcidentes cads = CadastroAcidentes.getInstance();
-        
         Acidente ac = new Acidente("AV","Ana Cesar", "21/10/2014");
+        CadastroAcidentes cads = CadastroAcidentes.getInstance();
         cads.add(ac);
         System.out.println(cads.toString());
 
