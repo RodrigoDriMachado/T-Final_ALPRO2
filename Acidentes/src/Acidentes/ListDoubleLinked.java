@@ -70,6 +70,10 @@ public class ListDoubleLinked<E> implements ListTAD<E> {
                     aux = aux.prev;
                 }
             }
+            novoNodo.next = aux;
+            novoNodo.prev = aux.prev;
+            aux.prev.next = novoNodo;
+            aux.prev = novoNodo;
         }
     }
 
