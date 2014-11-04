@@ -1,6 +1,8 @@
 package Acidentes;
 
-public interface ListTAD<E>  {
+import java.util.Iterator;
+
+public interface ListTAD<E>  extends Iterable<E>{
     public void add(E element);
     public void add(int index, E element);
     public E get(int index);
@@ -11,5 +13,7 @@ public interface ListTAD<E>  {
     public int size();
     public boolean contains(E element);
     public int indexOf(E element);
-    public void clear();
+    public void clear();   
+    Iterator<E> iterator();
+    
 }
