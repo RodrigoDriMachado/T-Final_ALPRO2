@@ -15,9 +15,10 @@ public class App {
     public static void main(String[] args) {
         
         Acidente ac = new Acidente("AV","Ana Cesar", "21/10/2014");
-        CadastroAcidentes cads = CadastroAcidentes.getInstance();
-        cads.add(ac);
-        System.out.println(cads.toString());
+        //CadastroAcidentes cads = CadastroAcidentes.getInstance();
+        ListDoubleLinked<Acidente> l = new ListDoubleLinked<>();
+        l.add(ac);
+        System.out.println(l);
 
         /*
         if(cads.readFile("acidente.csv"))
